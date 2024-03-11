@@ -18,7 +18,7 @@ export const selectVisibleContacts = createSelector(
         keys: ['name', 'number'],
       }
       const fuse = new Fuse(contacts, fuseOption);
-      const data = fuse.search(filter.toLowerCase());
+      const data = fuse.search(filter);
       return data.map(item => {return item.item});
     } else {
       return contacts;
