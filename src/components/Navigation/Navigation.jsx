@@ -1,21 +1,34 @@
-import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../hooks';
-import css from './Navigation.module.css';
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks";
+import Link from "@mui/material/Link";
+import MenuList from '@mui/material/MenuList';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
-      <NavLink className={css.link} to="/">
+    <MenuList open sx={{flexGrow: 1, display:"flex", gap:"36px"}}>
+      <Link
+        component={NavLink}
+        to={"/"}
+        color="inherit"
+        underline="none"
+        variant="h6"
+      >
         Home
-      </NavLink>
+      </Link>
       {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
+        <Link
+          component={NavLink}
+          to={"/contacts"}
+          color="inherit"
+          underline="none"
+          variant="h6"
+        >
           Phonebook
-        </NavLink>
+        </Link>
       )}
-    </nav>
+    </MenuList>
   );
 };
 

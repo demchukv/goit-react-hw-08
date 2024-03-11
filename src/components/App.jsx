@@ -15,6 +15,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
+  
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 

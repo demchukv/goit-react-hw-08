@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DocumentTitle from '../components/DocumentTitle';
 import ContactList from '../components/ContactList/ContactList';
-//import { ContactEditor } from '../components/ContactEditor/ContactEditor';
 import ContactForm from '../components/ContactForm/ContactForm';
 import SearchBox from '../components/SearchBox/SearchBox';
 import Loader from '../components/Loader/Loader';

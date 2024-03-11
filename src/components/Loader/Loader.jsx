@@ -1,17 +1,7 @@
-import { ProgressBar } from "react-loader-spinner"
+import LinearProgress from "@mui/material/LinearProgress";
 
 const Loader = () => {
-  return (
-    <ProgressBar
-  visible={true}
-  height="80"
-  width="80"
-  color="#4fa94d"
-  ariaLabel="progress-bar-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  />
-  )
-}
+  return <LinearProgress color="primary" fourColor variant="indeterminate" />;
+};
 
-export default Loader
+export default Loader;

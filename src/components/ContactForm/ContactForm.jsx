@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import { useId } from "react";
 import * as Yup from "yup"
 import css from './ContactForm.module.css'
+import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
 
 const ContactSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
@@ -28,6 +30,7 @@ const ContactForm = () => {
       };
 
     return (
+        <Box sx={{mt:4}}>
             <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
@@ -44,9 +47,10 @@ const ContactForm = () => {
                         <Field className={css.formInput} type="text" name="number" id={numberFieldId} placeholder="123-456-7890" />
                         <ErrorMessage name="number" component="div" className={css.formErrorMsg} />
                     </div>
-                    <button type="submit">Add Contact</button>
+                    <Button type="submit" variant='contained'>Add Contact</Button>
                 </Form>
             </Formik>
+            </Box>
     )
 }
 
