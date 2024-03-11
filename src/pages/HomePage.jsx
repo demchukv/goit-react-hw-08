@@ -10,9 +10,8 @@ const HomePage = () => {
       <DocumentTitle>Personal phonebook</DocumentTitle>
       <Box sx={{ my: 4 }}>
         <Typography
-          variant="h1"
           component="p"
-          sx={{ mb: 2, textAlign: "center", fontSize: "36px" }}
+          sx={{ mb: 2, textAlign: "center" }}
         >
           <ContactPhoneIcon />
         </Typography>

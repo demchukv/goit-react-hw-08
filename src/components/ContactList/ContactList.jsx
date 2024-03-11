@@ -8,6 +8,7 @@ const ContactList = () => {
   const contacts = useSelector(selectVisibleContacts);
 
   return (
+    Array.isArray(contacts) &&
     <ul className={css.contactList}>
         {contacts.map((contact) => {
             return <Contact key={contact.id} contact={contact} />

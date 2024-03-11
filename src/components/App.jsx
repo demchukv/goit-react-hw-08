@@ -7,6 +7,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from '../redux/auth/operations';
 import { useAuth } from '../hooks';
+import Loader from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -15,7 +16,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
-  
+
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -24,7 +25,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <>
       <Routes>

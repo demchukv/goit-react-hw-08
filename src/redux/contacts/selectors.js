@@ -1,4 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
+import Fuse from "fuse.js";
 
 export const selectIsLoading = (state) => state.contacts.isLoading;
 
@@ -12,9 +13,13 @@ export const selectVisibleContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
     if (filter.length > 0) {
-      return contacts.filter(({ name }) =>
-        name.toLowerCase().includes(filter.toLowerCase())
-      );
+      const fuseOption = {
+        isCaseSensitive: false,
+        keys: ['name', 'number'],
+      }
+      const fuse = new Fuse(contacts, fuseOption);
+      const data = fuse.search(filter.toLowerCase());
+      return data.map(item => {return item.item});
     } else {
       return contacts;
     }

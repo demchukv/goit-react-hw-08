@@ -27,7 +27,7 @@ const ContactForm = () => {
     const handleSubmit = (values, actions) => {
         dispatch(addContact(values));
         actions.resetForm();
-      };
+    };
 
     return (
         <Box sx={{mt:4}}>
