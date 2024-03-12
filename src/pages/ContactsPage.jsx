@@ -23,12 +23,12 @@ export default function Contacts() {
   return (
     <>
       <DocumentTitle>Your phonebook</DocumentTitle>
-      <Grid container spacing={8}>
-        <Grid item xs={3}>
+      <Grid container spacing={6}>
+        <Grid item xs={12} sm={5} md={3}>
             <ContactForm />
             <SearchBox />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} sm={7} md={9}>
             {isError && <ErrorMessage>{isError}</ErrorMessage>}
             {isLoading && <Loader />}
             <ContactList />
