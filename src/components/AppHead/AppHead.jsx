@@ -13,7 +13,7 @@ export const AppHead = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="lg">
-        <Toolbar>
+        <Toolbar sx={{flexWrap:"wrap"}}>
             <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </Toolbar>

@@ -25,6 +25,7 @@ const Contact = ({ contact }) => {
 
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
+  
   return (
     <li className={css.contactItem}>
       <div>

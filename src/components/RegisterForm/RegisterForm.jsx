@@ -45,7 +45,7 @@ export const RegisterForm = () => {
   });
 
   return (
-    <Box sx={{ mt: 4 }} maxWidth="xs">
+    <Box sx={{ maxWidth:280,margin:"0 auto",mt: 4 }}>
     <form onSubmit={formik.handleSubmit} autoComplete="off">
     <TextField
         fullWidth
