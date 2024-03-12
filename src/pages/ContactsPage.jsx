@@ -6,12 +6,14 @@ import ContactForm from '../components/ContactForm/ContactForm';
 import SearchBox from '../components/SearchBox/SearchBox';
 import Loader from '../components/Loader/Loader';
 import { fetchContacts } from '../redux/contacts/operations';
-import { selectIsLoading } from '../redux/contacts/selectors';
+import { selectIsLoading, selectError } from '../redux/contacts/selectors';
+import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
 export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-
+  const isError = useSelector(selectError);
+  
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -21,7 +23,8 @@ export default function Contacts() {
       <DocumentTitle>Your phonebook</DocumentTitle>
       <ContactForm />
       <SearchBox />
-      <div>{isLoading && <Loader />}</div>
+      {isError && <ErrorMessage>{isError}</ErrorMessage>}
+      {isLoading && <Loader />}
       <ContactList />
     </>
   );

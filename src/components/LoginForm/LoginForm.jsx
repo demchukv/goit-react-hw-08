@@ -1,42 +1,86 @@
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
-import css from './LoginForm.module.css';
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleLogin = (values) => {
 
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
     )
       .unwrap()
       .then(() => {
-        console.log('login success');
+        console.log("login success");
       })
       .catch(() => {
-        console.log('login error');
+        console.log("login error");
       });
-
-    form.reset();
   };
 
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string("Enter your email")
+      .email("Enter a valid email")
+      .required("Email is required"),
+    password: Yup.string("Enter your password")
+      .min(5, "Password should be of minimum 5 characters length")
+      .max(10, "Password should be of maximum 10 characters length")
+      .required("Password is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: LoginSchema,
+    onSubmit: (values) => {
+      handleLogin(values);
+    },
+  });
+
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Box sx={{ mt: 4 }} maxWidth="xs">
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
+      <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+          sx={{mb:2}}
+          variant="standard"
+        />
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+          sx={{mb:2}}
+          variant="standard"
+        />
+        <Button variant="contained" type="submit" fullWidth>
+          Log In
+        </Button>
+      </form>
+    </Box>
   );
 };
