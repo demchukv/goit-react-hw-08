@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import toast from 'react-hot-toast';
 
 const ContactForm = ({ contact = null, handleClose = null }) => {
     
@@ -13,10 +14,12 @@ const ContactForm = ({ contact = null, handleClose = null }) => {
       if(contact === null){
         dispatch(addContact(values));
         formik.resetForm();
+        toast.success('New contact successfully added to phonebook!')
       }else{
         values.id = contact.id;
         dispatch(updateContact(values));
         handleClose();
+        toast.success('Contact successfully updated!')
       }
     };
 
@@ -37,7 +40,7 @@ const ContactForm = ({ contact = null, handleClose = null }) => {
       });
     
     return (
-        <Box sx={{ mt: 3 }} maxWidth="xs">
+        <Box sx={{ mt: 3, maxWidth:280 }}>
         <form onSubmit={formik.handleSubmit} autoComplete="off">
         <TextField
             fullWidth

@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import DeleteContactDialog from "../DeleteContactDialog/DeleteContactDialog";
 import EditContactDialog from '../EditContactDialog/EditContactDialog';
+import toast from 'react-hot-toast';
 
 const Contact = ({ contact }) => {
 
@@ -31,7 +32,10 @@ const Contact = ({ contact }) => {
 
   const dispatch = useDispatch();
 
-  const handleDelete = () => dispatch(deleteContact(contact.id));
+  const handleDelete = () => {
+    dispatch(deleteContact(contact.id));
+    toast.success('Contact deleted from phonebook!')
+  }
 
   
   return (

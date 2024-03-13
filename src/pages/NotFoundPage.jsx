@@ -12,7 +12,7 @@ const NotFoundPage = () => {
         <Typography variant="h4" component="h1" sx={{ mb: 2, textAlign:'center'}}>
         Sorry, page not found!
         </Typography>
-        <Typography variant="h5" component="h2" sx={{ mb: 2, textAlign:'center' }}>
+        <Typography variant="h6" component="h2" sx={{ mb: 2, textAlign:'center' }}>
         Start with <Link href="/">Home page</Link>
         </Typography>
       </Box>
