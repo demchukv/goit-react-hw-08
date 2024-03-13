@@ -1,17 +1,23 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contacts/operations';
+import { addContact, updateContact } from '../../redux/contacts/operations';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 
-const ContactForm = () => {
+const ContactForm = ({ contact = null, handleClose = null }) => {
     
     const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
+      if(contact === null){
         dispatch(addContact(values));
         formik.resetForm();
+      }else{
+        values.id = contact.id;
+        dispatch(updateContact(values));
+        handleClose();
+      }
     };
 
     const ContactSchema = Yup.object().shape({
@@ -21,8 +27,8 @@ const ContactForm = () => {
     
     const formik = useFormik({
         initialValues: {
-          name: "",
-          number: "",
+          name: contact === null ? "" : contact.name,
+          number: contact === null ? "" : contact.number,
         },
         validationSchema: ContactSchema,
         onSubmit: (values) => {
@@ -62,7 +68,7 @@ const ContactForm = () => {
             variant="outlined"
           />
           <Button variant="contained" type="submit" fullWidth>
-            Add contact
+            {contact === null ? "Add contact" : "Update contact"}
           </Button>
         </form>
       </Box>

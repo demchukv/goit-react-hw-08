@@ -44,7 +44,7 @@ export const fetchContacts = createAsyncThunk(
     'contacts/updateContact',
     async (values, thunkAPI) => {
       try {
-        const response = await axios.patch(`/contacts/${values.id}`, { id: values.id, name: values.name, number: values.number });
+        const response = await axios.patch(`/contacts/${values.id}`, { name: values.name, number: values.number });
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
