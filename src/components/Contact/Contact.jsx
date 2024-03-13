@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { PropTypes } from "prop-types";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
-import { FaUser } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
 import css from "./Contact.module.css";
 import Button from "@mui/material/Button";
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -38,11 +38,11 @@ const Contact = ({ contact }) => {
     <li className={css.contactItem}>
       <div>
         <span className={css.contactName}>
-          <FaUser />
+          <PersonIcon />
           {contact.name}
         </span>
         <span className={css.contactNumber}>
-          <FaPhone />
+          <PhoneIcon />
           {contact.number}
         </span>
       </div>
