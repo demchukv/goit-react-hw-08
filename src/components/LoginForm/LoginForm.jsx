@@ -47,7 +47,7 @@ export const LoginForm = () => {
   });
 
   return (
-    <Box sx={{ maxWidth:280,margin:"0 auto", mt: 4 }}>
+    <Box sx={{ maxWidth:380,margin:"0 auto", mt: 4 }}>
       <form onSubmit={formik.handleSubmit} autoComplete="off">
       <TextField
           fullWidth

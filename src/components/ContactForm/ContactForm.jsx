@@ -40,7 +40,7 @@ const ContactForm = ({ contact = null, handleClose = null }) => {
       });
     
     return (
-        <Box sx={{ mt: 3, maxWidth:280 }}>
+        <Box sx={{ mt: 3 }}>
         <form onSubmit={formik.handleSubmit} autoComplete="off">
         <TextField
             fullWidth

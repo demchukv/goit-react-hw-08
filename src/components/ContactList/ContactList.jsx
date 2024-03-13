@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectVisibleContacts } from '../../redux/contacts/selectors';
 import Contact from "../Contact/Contact";
-import css from './ContactList.module.css';
+import { List } from '@mui/material';
 
 const ContactList = () => {
 
@@ -9,11 +9,11 @@ const ContactList = () => {
 
   return (
     Array.isArray(contacts) &&
-    <ul className={css.contactList}>
+    <List sx={{display:"flex", flexWrap:"wrap", gap:"12px", mt:2}}>
         {contacts.map((contact) => {
             return <Contact key={contact.id} contact={contact} />
         })}
-    </ul>
+    </List>
   )
 
 }
