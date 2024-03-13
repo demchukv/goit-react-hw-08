@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
-//import css from "./Contact.module.css";
 import DeleteContactDialog from "../DeleteContactDialog/DeleteContactDialog";
 import EditContactDialog from "../EditContactDialog/EditContactDialog";
 import toast from "react-hot-toast";

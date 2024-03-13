@@ -14,7 +14,6 @@ import { contactsReducer } from './contacts/contactsSlice';
 import { filtersReducer } from './contacts/filtersSlice';
 import { authReducer } from './auth/slice';
 
-// Persisting token field from auth slice to localstorage
 const authPersistConfig = {
   key: 'auth',
   storage,

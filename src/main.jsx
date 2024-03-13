@@ -6,7 +6,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { App } from "./components/App";
 import { store, persistor } from "./redux/store";
-//import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -15,6 +14,7 @@ const theme = createTheme({
     mode: 'light',
   },
 });
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>

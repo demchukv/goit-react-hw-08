@@ -1,8 +1,4 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
+import { Button, Dialog, DialogActions, DialogTitle, DialogContent } from '@mui/material';
 import ContactForm from '../ContactForm/ContactForm';
 
 const EditContactDialog = ({ open, handleClose, contact }) => {
