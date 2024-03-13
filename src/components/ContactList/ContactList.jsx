@@ -9,7 +9,7 @@ const ContactList = () => {
 
   return (
     Array.isArray(contacts) &&
-    <List sx={{display:"flex", flexWrap:"wrap", gap:"12px", mt:2}}>
+    <List sx={{display:"flex", justifyContent:"space-around", flexWrap:"wrap", gap:"12px", mt:2}}>
         {contacts.map((contact) => {
             return <Contact key={contact.id} contact={contact} />
         })}

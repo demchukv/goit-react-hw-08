@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
-import css from "./Contact.module.css";
+//import css from "./Contact.module.css";
 import DeleteContactDialog from "../DeleteContactDialog/DeleteContactDialog";
 import EditContactDialog from "../EditContactDialog/EditContactDialog";
 import toast from "react-hot-toast";
-import { Button, ButtonGroup, ListItem, Card, CardContent } from "@mui/material";
+import { Button, ButtonGroup, ListItem, Card, CardContent, Typography, Box } from "@mui/material";
 
 const Contact = ({ contact }) => {
   const [open, setOpen] = useState(false);
@@ -36,8 +36,8 @@ const Contact = ({ contact }) => {
   };
 
   return (
-    <ListItem sx={{ width: "280px", padding: 0 }}>
-      <Card sx={{ width: "280px" }}>
+    <ListItem sx={{ width: "270px", padding: 0 }}>
+      <Card sx={{ width: "270px" }}>
         <CardContent
           sx={{
             display: "flex",
@@ -47,16 +47,16 @@ const Contact = ({ contact }) => {
             padding: "16px",
           }}
         >
-          <div>
-            <span className={css.contactName}>
+          <Box>
+            <Typography sx={{display:"flex", alignItems:"center", gap:"8px", lineHeight:1, mb:2 }}>
               <PersonIcon />
               {contact.name}
-            </span>
-            <span className={css.contactNumber}>
+            </Typography>
+            <Typography sx={{display:"flex", alignItems:"center", gap:"8px" }}>
               <PhoneIcon />
               {contact.number}
-            </span>
-          </div>
+            </Typography>
+          </Box>
           <ButtonGroup
             orientation="vertical"
             aria-label="Vertical button group"
