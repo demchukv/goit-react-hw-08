@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import toast from "react-hot-toast";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,10 @@ export const LoginForm = () => {
     )
       .unwrap()
       .then(() => {
-        console.log("login success");
+        toast.success("login success");
       })
-      .catch(() => {
-        console.log("login error");
+      .catch((err) => {
+        toast.error("login error: " + err.message);
       });
   };
 
